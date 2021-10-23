@@ -39,6 +39,8 @@ spec:
             steps{
                 sh "git remote add arendst https://github.com/arendst/Tasmota || echo Remote already exists"
                 sh "git fetch --all -p"
+                sh "git config user.name TinkerKenjins"
+                sh "git config user.email kenjins@tinker.works"
                 sh "git rebase arendst/master"
 
                 sh "git log | head -n10"
