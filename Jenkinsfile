@@ -33,6 +33,7 @@ spec:
                 sh "platformio --version"
                 sh "ls -al"
                 sh "git remote -v"
+                sh "curl -V"
             }
         }
         stage('Rebase') {
@@ -49,6 +50,11 @@ spec:
         stage('Compile') {
             steps{
                 sh "platformio run"
+            }
+        }
+        stage('Deploy') {
+            steps{
+                sh "curl -V"
             }
         }
     }
