@@ -53,8 +53,15 @@ spec:
             }
         }
         stage('Deploy') {
-            steps{
-                sh "curl -V"
+            when {
+                anyOf {
+                    branch 'master'
+                    branch 'deploy'
+                }
+            }
+            steps {
+                echo 'Deploying ...'
+                sh "bash deploy.sh http://tasmota.tinker.haus"
             }
         }
     }
