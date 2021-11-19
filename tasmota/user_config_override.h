@@ -86,7 +86,8 @@ Examples :
 
 #    warning **** Build: THERMOSTAT ****
 #    ifndef USE_THERMOSTAT
-#    define USE_THERMOSTAT
+#    define USE_THERMOSTAT 1
+#    define DEBUG_THERMOSTAT 1
 #    endif
 
 #endif
