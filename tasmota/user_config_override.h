@@ -92,6 +92,21 @@ Examples :
 
 #endif
 
+#ifdef FIRMWARE_HOOD
+
+#    warning **** Build: HOOD ****
+#    ifndef USE_THERMOSTAT
+#    ifndef USE_DHT
+#      define USE_DHT 1
+#    endif
+#    ifndef USE_IR_REMOTE
+#      define USE_IR_REMOTE 1
+#    endif
+#    define USE_IR_REMOTE_FULL 1
+#    endif
+
+#endif
+
 
 
 #endif  // _USER_CONFIG_OVERRIDE_H_
