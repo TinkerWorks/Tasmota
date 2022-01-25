@@ -92,6 +92,18 @@ Examples :
 
 #endif
 
+#ifdef FIRMWARE_THERMOSTAT_SI7021
+
+#  warning **** Build: THERMOSTAT_SI7021 ****
+#    undef THERMOSTAT_SENSOR_NAME
+#    define THERMOSTAT_SENSOR_NAME "SI7021" // Name of the local sensor to be used
+#  ifndef USE_THERMOSTAT
+#    define USE_THERMOSTAT 1
+#    define DEBUG_THERMOSTAT 1
+#  endif
+
+#endif
+
 #ifdef FIRMWARE_HOOD
 
 #    warning **** Build: HOOD ****
