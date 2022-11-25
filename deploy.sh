@@ -3,9 +3,12 @@ set -e
 
 URL=$1
 
-for path in .pio/build/*/ ; do
-    name=$(basename $path)
-    binpath=$(ls $path*.bin)
+for buildpath in .pio/build/*/ ; do
+    echo ; echo
+    echo "Uploading ..... $buildpath"
+
+    name=$(basename $buildpath)
+    binpath=$(ls $buildpath/firmware.bin)
     remotepath=$URL/$name.bin
 
     curl -T $binpath $remotepath
