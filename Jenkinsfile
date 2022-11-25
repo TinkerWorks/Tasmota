@@ -19,6 +19,12 @@ spec:
     - sleep
     args:
     - infinity
+  - name: mosquitto
+    image: eclipse-mosquitto
+    command:
+    - sleep
+    args:
+    - infinity
 '''
             defaultContainer 'platformio'
         }
@@ -56,12 +62,24 @@ spec:
             when {
                 anyOf {
                     branch 'master'
-                    branch 'deploy'
                 }
             }
             steps {
                 echo 'Deploying ...'
                 sh "bash deploy.sh http://tasmota.tinker.haus"
+            }
+        }
+        stage('Rollout') {
+            when {
+                anyOf {
+                    branch 'master'
+                }
+            }
+            steps {
+                container('mosquitto') {
+                    echo 'Triggering upgrade ...'
+                    sh 'mosquitto_pub -h mqtt.tinker.haus -t "cmnd/tasmotas/Upgrade" -m "1"'
+                }
             }
         }
     }
