@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-String daily_cron_string = BRANCH_NAME == "master" ? "@daily" : ""
+String daily_cron_string = BRANCH_NAME == "master" ? "0 5 * * 0" : ""
 
 
 // Uses Declarative syntax to run commands inside a container.
