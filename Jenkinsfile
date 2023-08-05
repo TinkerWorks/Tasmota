@@ -38,12 +38,13 @@ spec:
                 sh "whoami"
                 sh "platformio --version"
                 sh "ls -al"
-                sh "git remote -v"
                 sh "curl -V"
             }
         }
         stage('Rebase') {
             steps{
+                sh "git config --global --add safe.directory /home/jenkins/agent/workspace/Tasmota_master"
+                sh "git remote -v"
                 sh "git remote add arendst https://github.com/arendst/Tasmota || echo Remote already exists"
                 sh "git fetch --all -p"
                 sh "git config user.name TinkerKenjins"
