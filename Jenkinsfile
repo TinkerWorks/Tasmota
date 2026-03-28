@@ -30,6 +30,8 @@ spec:
     env:
     - name: PLATFORMIO_CORE_DIR
       value: /home/jenkins/agent/.platformio
+    - name: PATH
+      value: /home/jenkins/agent/.platformio/penv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     securityContext:
       allowPrivilegeEscalation: false
       capabilities:
