@@ -27,6 +27,9 @@ spec:
     - sleep
     args:
     - infinity
+    env:
+    - name: PLATFORMIO_CORE_DIR
+      value: /home/jenkins/agent/.platformio
     securityContext:
       allowPrivilegeEscalation: false
       capabilities:
