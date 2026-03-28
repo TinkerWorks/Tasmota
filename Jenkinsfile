@@ -56,7 +56,7 @@ spec:
         stage('Check') {
             steps{
                 sh "env"
-                sh "whoami"
+                sh "id"
                 sh "ls -al"
                 sh "curl -V"
             }
