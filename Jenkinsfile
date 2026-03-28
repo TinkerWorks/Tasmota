@@ -10,13 +10,27 @@ pipeline {
 apiVersion: v1
 kind: Pod
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
   containers:
+  - name: jnlp
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
   - name: platformio
     image: python:3
     command:
     - sleep
     args:
     - infinity
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
   - name: mosquitto
     image: eclipse-mosquitto
     imagePullPolicy: Always
@@ -24,6 +38,10 @@ spec:
     - sleep
     args:
     - infinity
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
 '''
             defaultContainer 'platformio'
         }
